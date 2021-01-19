@@ -13,6 +13,7 @@ func main() {
 	var eventSubscriptions EventSubscriptions
 	var sub string
 	var resourceGr string
+	var sfile	*string
 
 	subsfile := flag.String("subsfile", "", "The yaml file that contains the eventgrid subscriptions")
 	subscriptionid := flag.String("subscription-id", "", "The name of the subscription for the eventgrid and the storage account")
@@ -27,6 +28,11 @@ func main() {
 		resourceGr = *resourceGroup
 	} else {
 		log.Fatalln("Please provide a  resource group for your azure account: --resource-group")
+	}
+	if  *subsfile != "" {
+		sfile = subsfile
+	}else {
+		log.Fatalln("Please provide a  file with the appropriate event subscriptions: --subsfile path/to/file")
 	}
 	subclient := eventgrid.NewEventSubscriptionsClient(sub)
 
