@@ -32,7 +32,7 @@ func CreateUpdateEventSubscription(client eventgrid.EventSubscriptionsClient,
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("EventSubscription that links topic %s with storage queue %s on the storage account %s was created or updated", topicName, storageQueueName, storageAccountName)
+	fmt.Printf("EventSubscription that links topic %s with storage queue %s on the storage account %s was created or updated", topicName, *storageQueueName, storageAccountName)
 }
 
 func (s *EventSubscriptions) getConf(eventSubscriptionsFile *string) *EventSubscriptions {
