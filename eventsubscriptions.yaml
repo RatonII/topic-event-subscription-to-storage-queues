@@ -1,0 +1,4 @@
+- eventSubscriptionName: "Subscribe-to-enrollment-log"
+  topicName:  "enrollment-log"
+  storageAccountName: "enrl"
+  storageQueueName: "enrollment-log"
