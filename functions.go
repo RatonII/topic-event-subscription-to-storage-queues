@@ -11,10 +11,10 @@ import (
 )
 
 func CreateUpdateEventSubscription(client eventgrid.EventSubscriptionsClient,
-	eventSubscriptionName, storageAccountName, topicName, subscription, resourceGroup string,
+	eventSubscriptionName, storageAccountName,eventgridName, topicName, subscription, resourceGroup string,
 	storageQueueName *string, wg *sync.WaitGroup) {
 
-	scope := fmt.Sprintf("/subscriptions/%s/resourceGroups/%s/providers/Microsoft.EventGrid/topics/%s", subscription, resourceGroup, topicName)
+	scope := fmt.Sprintf("/subscriptions/%s/resourceGroups/%s/providers/Microsoft.EventGrid/domains/%s/topics/%s", subscription, resourceGroup,eventgridName, topicName)
 	storageAccountID := fmt.Sprintf("/subscriptions/%s/resourceGroups/%s/providers/Microsoft.Storage/storageAccounts/%s", subscription, resourceGroup, storageAccountName)
 	_, err := client.CreateOrUpdate(context.Background(), scope, eventSubscriptionName, eventgrid.EventSubscription{
 		EventSubscriptionProperties: &eventgrid.EventSubscriptionProperties{

@@ -44,7 +44,7 @@ func main() {
 	eventSubConf := eventSubscriptions.getConf(sfile)
 	wg.Add(len(*eventSubConf))
 	for _, e := range *eventSubConf {
-		go CreateUpdateEventSubscription(subclient, e.EventSubscriptionName, e.StorageAccountName, e.TopicName, sub, resourceGr, e.StorageQueueName, &wg)
+		go CreateUpdateEventSubscription(subclient, e.EventSubscriptionName, e.StorageAccountName,e.EventGridName, e.TopicName, sub, resourceGr, e.StorageQueueName, &wg)
 	}
 	wg.Wait()
 }
