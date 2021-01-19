@@ -41,7 +41,7 @@ func main() {
 		panic(err)
 	}
 	subclient.Authorizer = authorizer
-	eventSubConf := eventSubscriptions.getConf(subsfile)
+	eventSubConf := eventSubscriptions.getConf(sfile)
 	wg.Add(len(*eventSubConf))
 	for _, e := range *eventSubConf {
 		go CreateUpdateEventSubscription(subclient, e.EventSubscriptionName, e.StorageAccountName, e.TopicName, sub, resourceGr, e.StorageQueueName, &wg)
